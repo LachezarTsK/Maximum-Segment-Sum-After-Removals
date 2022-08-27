@@ -52,9 +52,8 @@ public:
             if (query + 1 < nums.size() && unionFind.rank[query + 1] > 0) {
                 unionFind.joinByRank(unionFind.findParent(query + 1), unionFind.findParent(query));
             }
-
-            int parentOfQuery = unionFind.rank[unionFind.findParent(query)];
-            currentMax = currentMax > parentOfQuery ? currentMax : parentOfQuery;
+            currentMax = currentMax > unionFind.rank[unionFind.findParent(query)] ?
+                         currentMax : unionFind.rank[unionFind.findParent(query)];
         }
         return maxSegmentSum;
     }
